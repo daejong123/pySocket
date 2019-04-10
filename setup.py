@@ -12,17 +12,19 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'mypackage'
-DESCRIPTION = 'My short description for my project.'
-URL = 'https://github.com/me/myproject'
-EMAIL = 'me@example.com'
-AUTHOR = 'Awesome Soul'
+NAME = 'wonderBits'
+DESCRIPTION = 'wonderbits by mfeducation.'
+EMAIL = 'daejong2014@163.com'
+AUTHOR = 'dottie'
 REQUIRES_PYTHON = '>=3.6.0'
 VERSION = None
+URL='https://github.com/daejong123/pySocket.git'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
     # 'requests', 'maya', 'records',
+    'requests',
+    'python-socketio'
 ]
 
 # What packages are optional?
