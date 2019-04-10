@@ -1,7 +1,7 @@
 from .wonderbits import Wonderbits
 
 class Control(Wonderbits):
-    def __init__(self, index = 1):
+    def __init__(self, index):
         Wonderbits.__init__(self)
         self.index = index
 
@@ -31,101 +31,46 @@ class Control(Wonderbits):
         self.register_event('control{}'.format(self.index), 'm2_value', cb)
     
     def is_sw1_pressed(self):
-        msg = 'control{}.is_sw1_pressed()'.format(self.index)
-        self.sio.emit('mfe-reporter', msg)
-        self.r = '0'
-
-        @self.sio.on(msg)
-        def on_data(data):
-            self.r = data
-
-        self.setTimeOut()
+        command = 'control{}.is_sw1_pressed()'.format(self.index)
+        self.get_command(command)
         return self.r
     
     def is_sw2_pressed(self):
-        msg = 'control{}.is_sw2_pressed()'.format(self.index)
-        self.sio.emit('mfe-reporter', msg)
-        self.r = '0'
-
-        @self.sio.on(msg)
-        def on_data(data):
-            self.r = data
-
-        self.setTimeOut()
+        command = 'control{}.is_sw2_pressed()'.format(self.index)
+        self.get_command(command)
         return self.r
     
     def is_m1_connected(self):
-        msg = 'control{}.is_m1_connected()'.format(self.index)
-        self.sio.emit('mfe-reporter', msg)
-        self.r = '0'
-
-        @self.sio.on(msg)
-        def on_data(data):
-            self.r = data
-
-        self.setTimeOut()
+        command = 'control{}.is_m1_connected()'.format(self.index)
+        self.get_command(command)
         return self.r
     
     def is_m2_connected(self):
-        msg = 'control{}.is_m2_connected()'.format(self.index)
-        self.sio.emit('mfe-reporter', msg)
-        self.r = '0'
-
-        @self.sio.on(msg)
-        def on_data(data):
-            self.r = data
-
-        self.setTimeOut()
+        command = 'control{}.is_m2_connected()'.format(self.index)
+        self.get_command(command)
         return self.r
     
     def is_sw3_at_1(self):
-        msg = 'control{}.is_sw3_at_1()'.format(self.index)
-        self.sio.emit('mfe-reporter', msg)
-        self.r = '0'
-
-        @self.sio.on(msg)
-        def on_data(data):
-            self.r = data
-
-        self.setTimeOut()
+        command = 'control{}.is_sw3_at_1()'.format(self.index)
+        self.get_command(command)
         return self.r
     
     def get_sw4(self):
-        msg = 'control{}.get_sw4()'.format(self.index)
-        self.sio.emit('mfe-reporter', msg)
-        self.r = '0'
-
-        @self.sio.on(msg)
-        def on_data(data):
-            self.r = data
-
-        self.setTimeOut()
+        command = 'control{}.get_sw4()'.format(self.index)
+        self.get_command(command)
         return self.r
     
     def set_m1_m2_sensitivity(self, limit):
-        self.sio.emit("mfe-message", 'control{}.set_m1_m2_sensitivity({})'.format(self.index,limit))
+        command = 'control{}.set_m1_m2_sensitivity({})'.format(self.index,limit)
+        self.set_command(command)
     
     def get_m1_value(self):
-        msg = 'control{}.get_m1_value()'.format(self.index)
-        self.sio.emit('mfe-reporter', msg)
-        self.r = '0'
-
-        @self.sio.on(msg)
-        def on_data(data):
-            self.r = data
-
-        self.setTimeOut()
+        command = 'control{}.get_m1_value()'.format(self.index)
+        self.get_command(command)
         return self.r
     
     def get_m2_value(self):
-        msg = 'control{}.get_m2_value()'.format(self.index)
-        self.sio.emit('mfe-reporter', msg)
-        self.r = '0'
-
-        @self.sio.on(msg)
-        def on_data(data):
-            self.r = data
-
-        self.setTimeOut()
+        command = 'control{}.get_m2_value()'.format(self.index)
+        self.get_command(command)
         return self.r
     
