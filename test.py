@@ -1,43 +1,43 @@
+
 from wonderBits import Display, Led, Control
+from wonderBits import Display
 import random
+import time
 
 display1 = Display(1)
 display2 = Display(2)
 control1 = Control(1)
+control2 = Control(2)
 led = Led(1)
 
-# 设置值
-display1.print(1, 1, "hello")
+time.sleep(8)
+
+display1.print(1, 1, 'hello')
 display2.print(1, 1, "world")
-
-
-# 发送获取值
 state = display1.get_button_state()
-print('收到状态 {}'.format(state))
+print('收到显示模块按钮状态 {}'.format(state))
 
 m1 = control1.get_m1_value()
-print('收到获取 {}'.format(m1))
+print('收到获取m1的值为 {}'.format(m1))
 
 
-# 注册sw1被按下事件
-@control1.register_sw1
+@control1.event.sw1_pressed()
 def whenSw1Pressed(data):
     if data:
         led.set_rgb(0, 0, 255)
         display2.set_direction_regular()
+        sw4 = control1.get_sw4()
+        print('我收到sw4状态{}'.format(sw4))
+        print("_______________________")
 
-# 注册sw2被按下事件
-@control1.register_sw2
+@control2.event.sw2_pressed()
 def whenSw2Pressed(data):
     if data:
-        led.set_rgb(random.randint(0,255), random.randint(0,255), random.randint(0,255))
+        led.set_rgb(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
         display2.set_direction_reverse()
         isAtOne = control1.is_sw3_at_1()
-        print('sw在1位置: {}'.format(isAtOne))
-        control1.set_m1_m2_sensitivity(40)
-        sw4 = control1.get_sw4()
-        print('sw4状态{}'.format(sw4))
-
+        print('我收到sw在1位置: {}'.format(isAtOne))
+        print("************************")
 
 @display2.register_button
 def whenDisplayButton(data):
@@ -45,4 +45,4 @@ def whenDisplayButton(data):
     led.fade_to_rgb(30, 30, 30, 1000)
 
 # python3 setup.py sdist bdist_wheel
-# twine upload dist/* 
+# twine upload dist/*
