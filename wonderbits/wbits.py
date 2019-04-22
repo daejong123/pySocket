@@ -1,3 +1,4 @@
+
 import socketio
 import time
 import json
@@ -64,6 +65,7 @@ class Wonderbits(object):
             self.wbSerial.writeCommand(command)
         else:
             self.sio.emit("mfe-message", command)
+        time.sleep(.05)
 
     # 获取类
     def get_command(self, command):
@@ -76,7 +78,7 @@ class Wonderbits(object):
             @self.sio.on(command)
             def on_data(data):
                 Wonderbits.r = self._formatStr(data)
-        self._setTimeOut()
+        self._setTimeOut(.05)
 
     def parseEventDataAnddoNoti(self, data):
         try:

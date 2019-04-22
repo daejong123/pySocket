@@ -1,57 +1,55 @@
-📦 setup.py (for humans)
-=======================
+## python-sdk
 
-This repo exists to provide [an example setup.py] file, that can be used
-to bootstrap your next Python project. It includes some advanced
-patterns and best practices for `setup.py`, as well as some
-commented–out nice–to–haves.
+> 主要服务于豌豆拼硬件产品
+>
+> 需要搭配豌豆拼硬件模块使用
+>
+> **Powered by MFEducation(梦孚教育科技)**
 
-For example, this `setup.py` provides a `$ python setup.py upload`
-command, which creates a *universal wheel* (and *sdist*) and uploads
-your package to [PyPi] using [Twine], without the need for an annoying
-`setup.cfg` file. It also creates/uploads a new git tag, automatically.
+1. 包含各个模块的api
+    * 显示模块
+    * 控制模块
+    * 彩灯模块
+    * 射频通信模块
+    * 等等
 
-In short, `setup.py` files can be daunting to approach, when first
-starting out — even Guido has been heard saying, "everyone cargo cults
-thems". It's true — so, I want this repo to be the best place to
-copy–paste from :)
+2. sdk中包含串口通信功能
+    * 插上硬件模块可以直接通信
 
-**If you're interested in financially supporting Kenneth Reitz open source, consider [visiting this link](https://cash.me/$KennethReitz). Your support helps tremendously with sustainability of motivation, as Open Source is no longer part of my day job.**
 
-[Check out the example!][an example setup.py]
+### 简单示例
+> 创建一个py文件 如test.py
 
-![image]
+```python
+# 导入需要的模块
+from wonderbits import Display, Led, Control
+import random
 
-To Do
------
+# 创建必要的模块对象
+display1 = Display()
+led = Led()
+control1 = Control()
 
--   Tests via `$ setup.py test` (if it's concise).
+# 豌豆拼硬件复位等待时间，后期会优化
+time.sleep(8)
 
-Pull requests are encouraged!
+# 定义一个全局变量
+content = 1
+while True:
+    # 在显示模块上第一行第一列显示变量content
+    display1.print(1, 1, content)
+    content = content + 1
+    # 设置彩灯模块颜色， 颜色随机
+    led.set_rgb(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+    # 获取控制模块sw4开关状态值
+    sw4 = control1.get_sw4()
+    print('我收到sw4状态{}'.format(sw4))
+    # 获取开关sw3的位置
+    isAtOne = control1.is_sw3_at_1()
+    print('我收到sw在1位置{}'.format(isAtOne))
+```
 
-More Resources
---------------
-
--   [What is setup.py?] on Stack Overflow
--   [Official Python Packaging User Guide](https://packaging.python.org)
--   [The Hitchhiker's Guide to Packaging]
--   [Cookiecutter template for a Python package]
-
-License
--------
-
-This is free and unencumbered software released into the public domain.
-
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any means.
-
-✨🍰✨
-
-  [an example setup.py]: https://github.com/kennethreitz/setup.py/blob/master/setup.py
-  [PyPi]: https://docs.python.org/3/distutils/packageindex.html
-  [Twine]: https://pypi.python.org/pypi/twine
-  [image]: https://farm1.staticflickr.com/628/33173824932_58add34581_k_d.jpg
-  [What is setup.py?]: https://stackoverflow.com/questions/1471994/what-is-setup-py
-  [The Hitchhiker's Guide to Packaging]: https://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/creation.html
-  [Cookiecutter template for a Python package]: https://github.com/audreyr/cookiecutter-pypackage
+### 运行py文件
+```python
+python demo.py
+```

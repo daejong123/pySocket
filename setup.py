@@ -12,7 +12,7 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'wonderBits'
+NAME = 'wonderbits'
 DESCRIPTION = 'wonderbits by mfeducation.'
 EMAIL = 'daejong2014@163.com'
 AUTHOR = 'dottie'
@@ -24,7 +24,8 @@ URL='https://github.com/daejong123/pySocket.git'
 REQUIRED = [
     # 'requests', 'maya', 'records',
     'requests',
-    'python-socketio'
+    'python-socketio',
+    'pyserial'
 ]
 
 # What packages are optional?
@@ -87,9 +88,9 @@ class UploadCommand(Command):
         self.status('Uploading the package to PyPI via Twine…')
         os.system('twine upload dist/*')
 
-        self.status('Pushing git tags…')
-        os.system('git tag v{0}'.format(about['__version__']))
-        os.system('git push --tags')
+        # self.status('Pushing git tags…')
+        # os.system('git tag v{0}'.format(about['__version__']))
+        # os.system('git push --tags')
         
         sys.exit()
 

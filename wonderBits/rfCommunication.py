@@ -1,4 +1,4 @@
-from .wonderbits import Wonderbits
+from .wbits import Wonderbits
 
 
 class RfCommunication(Wonderbits):

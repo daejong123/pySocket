@@ -67,7 +67,7 @@ class WBSerial(object):
         receiveVal = None
         try:
             while True:
-                time.sleep(.001)
+                time.sleep(.005)
                 receiveStr = self._ser.readline().decode("gbk")
                 if receiveStr:
                     print("收到{}".format(receiveStr), end="")
@@ -119,8 +119,8 @@ class WBSerial(object):
             bps = 115200
             timex = 1
             self._ser = serial.Serial(portx, bps, timeout=timex)
-            self._ser.setRTS(True)
-            self._ser.setDTR(True)
+            cmd = '{}\r\n'.format("reset()").encode('gbk')
+            self._ser.write(cmd)
             # 监听串口返回的数据
             threading.Thread(target=self._doListenPort, args=('_doListenPort',self.msgQueue)).start()
             
