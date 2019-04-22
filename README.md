@@ -4,7 +4,7 @@
 >
 > 需要搭配豌豆拼硬件模块使用
 >
-> **Powered by MFEducation(梦孚教育科技)**
+> **Powered by MFEducation**
 
 1. 包含各个模块的api
     * 显示模块
