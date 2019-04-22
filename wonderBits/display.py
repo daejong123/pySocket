@@ -15,7 +15,8 @@ class Display(Wonderbits):
         return self.r
 
     def print(self, row, column, text, size=2):
-        command = 'display{}.print({},{},\"{}\",{})'.format(
+        text = str(text).replace('"', '\\"')
+        command = 'display{}.print({},{},"{}",{})'.format(
             self.index, row, column, text, size)
         self.set_command(command)
 

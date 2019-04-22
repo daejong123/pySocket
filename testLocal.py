@@ -1,6 +1,7 @@
 
 from wonderbits import Display, Led, Control
 import random
+import time
 
 display1 = Display()
 led = Led()
@@ -25,14 +26,14 @@ def whenSw2Pressed(data):
 
 content = 1
 while True:
-    display1.print(1, 1, content)
+    display1.print(1, 1,'hello"nihao"world')
     content = content + 1
     led.set_rgb(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-    sw4 = control1.get_sw4()
-    print('我收到sw4状态{}'.format(sw4))
-    print("----------------------")
-    isAtOne = control1.is_sw3_at_1()
-    print('我收到sw在1位置: {}'.format(isAtOne))
-    print("************************")
+#     sw4 = control1.get_sw4()
+#     print('我收到sw4状态{}'.format(sw4))
+#     print("----------------------")
+#     isAtOne = control1.is_sw3_at_1()
+#     print('我收到sw在1位置: {}'.format(isAtOne))
+#     print("************************")
 
 
