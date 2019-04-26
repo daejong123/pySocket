@@ -47,7 +47,6 @@ class Wonderbits(object):
         self.parseEventDataAnddoNoti(data)
     
     def reporterDataFromLocalPySerial(self, key, value):
-        print(key, value)
         Wonderbits.r = self._formatStr(value)
 
     # 事件注册
@@ -65,7 +64,7 @@ class Wonderbits(object):
             self.wbSerial.writeCommand(command)
         else:
             self.sio.emit("mfe-message", command)
-        time.sleep(.05)
+        time.sleep(.04)
 
     # 获取类
     def get_command(self, command):

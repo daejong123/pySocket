@@ -24,6 +24,7 @@
 # 导入需要的模块
 from wonderbits import Display, Led, Control
 import random
+import time
 
 # 创建必要的模块对象
 display1 = Display()
