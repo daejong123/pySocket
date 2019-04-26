@@ -18,7 +18,7 @@
 
 
 ### 简单示例
-> 创建一个py文件 如test.py
+> 创建一个py文件 demo.py
 
 ```python
 # 导入需要的模块
@@ -52,5 +52,7 @@ while True:
 
 ### 运行py文件
 ```python
+运行环境：需要python -V 为3版本
+运行：
 python demo.py
 ```
