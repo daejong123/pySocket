@@ -39,7 +39,7 @@ class WBSerial(object):
     def writeCommand(self, command):
         cmd = '{}\r\n'.format(command).encode('gbk')
         if self._canSend:
-            print('发送命令', command)
+            # print('发送命令', command)
             self._ser.write(cmd)
         else:
             self._waitToSendMsg.append(cmd)
