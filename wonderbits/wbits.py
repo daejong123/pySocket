@@ -7,7 +7,7 @@ import threading
 
 class Wonderbits(object):
     
-    r = '0'
+    r = None
     init_flag = False
     eventCallback = {}
     wbSerial = None
@@ -70,14 +70,14 @@ class Wonderbits(object):
     def get_command(self, command):
         if self.localSerial:
             self.wbSerial.writeCommand(command)
-            Wonderbits.r = '0'
+            Wonderbits.r = None
         else:
             self.sio.emit('mfe-reporter', command)
-            Wonderbits.r = '0'
+            Wonderbits.r = None
             @self.sio.on(command)
             def on_data(data):
                 Wonderbits.r = self._formatStr(data)
-        self._setTimeOut(.05)
+        self._setTimeOut(3)
 
     def parseEventDataAnddoNoti(self, data):
         try:
@@ -92,7 +92,7 @@ class Wonderbits(object):
             pass
 
      # 自定义sleep
-    def _setTimeOut(self, loop_forever_time=0.1, timeInterval=0.001,  breakProperty='r',  breakValue='0'):
+    def _setTimeOut(self, loop_forever_time=0.1, timeInterval=0.001,  breakProperty='r',  breakValue=None):
         count = loop_forever_time // timeInterval
         while count > 0:
             if breakProperty != "" and Wonderbits.__dict__[breakProperty] != breakValue:

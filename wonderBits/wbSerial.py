@@ -6,7 +6,6 @@ import threading
 class WBSerial(object):
 
     init_flag = False
-    msgQueue = None
     def __init__(self):
         self._initProperty()
         self._connectedCb = None
@@ -62,7 +61,7 @@ class WBSerial(object):
     def createThreadData(self,name, key, value):
         self.reporterDataCb(key, value)
 
-    def _doListenPort(self, name, msgQ):
+    def _doListenPort(self, name):
         receiveKey = None
         receiveVal = None
         try:
@@ -71,6 +70,7 @@ class WBSerial(object):
                 receiveStr = self._ser.readline().decode("gbk")
                 if receiveStr:
                     print("收到{}".format(receiveStr), end="")
+                    pass
                 else:
                     continue
                 if receiveStr.find('Type "help()" for more') != -1:
@@ -78,6 +78,9 @@ class WBSerial(object):
                     self._sendCmdFromQuene()
                     if self._connectedCb:
                         self._connectedCb()
+                    continue
+                    
+                if not self._canSend:
                     continue
 
                 if receiveStr.startswith(">>> {") or receiveStr.startswith("{"):
@@ -102,6 +105,9 @@ class WBSerial(object):
                             threading.Thread(target=self.createThreadData, args=('createThreadData',receiveKey, receiveVal)).start()
                         receiveKey = None
                         receiveVal = None
+                    # 当收到不是以>>>开头的内容时，会检查此时的key是否为None，若为None，则把该条>>>开头的数据作为 key，而不是作为 value。
+                    if receiveKey == None:
+                        receiveKey = receiveVal
                             
         except OSError as e:
             print('设备未配置')
@@ -122,7 +128,7 @@ class WBSerial(object):
             cmd = '{}\r\n'.format("reset()").encode('gbk')
             self._ser.write(cmd)
             # 监听串口返回的数据
-            threading.Thread(target=self._doListenPort, args=('_doListenPort',self.msgQueue)).start()
+            threading.Thread(target=self._doListenPort, args=('_doListenPort',)).start()
             
         except serial.serialutil.SerialException as e:
             print("串口异常{}".format(e))
