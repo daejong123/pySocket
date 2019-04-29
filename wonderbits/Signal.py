@@ -1,5 +1,7 @@
 from .wbits import Wonderbits
 
+
+
 class Signal(Wonderbits):
     def __init__(self, index = 1):
         Wonderbits.__init__(self)
@@ -25,5 +27,4 @@ class Signal(Wonderbits):
         """设置蜂鸣器以一个固定频率发声并保持一段时间后关闭蜂鸣器 """
         command = 'signal{}.play_a_note({},{})'.format(self.index,frequency,time)
         self.set_command(command)
-
     

@@ -1,5 +1,7 @@
 from .wbits import Wonderbits
 
+
+
 class Ultrasonic(Wonderbits):
     def __init__(self, index = 1):
         Wonderbits.__init__(self)
@@ -13,5 +15,5 @@ class Ultrasonic(Wonderbits):
         """该函数用于获取超声波检测的距离值，单位：cm """
         command = 'ultrasonic{}.get_distance()'.format(self.index)
         self.get_command(command)
-        return self.r
+        return self._result
     

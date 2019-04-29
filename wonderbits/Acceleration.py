@@ -1,5 +1,7 @@
 from .wbits import Wonderbits
 
+
+
 class Acceleration(Wonderbits):
     def __init__(self, index = 1):
         Wonderbits.__init__(self)
@@ -31,43 +33,43 @@ class Acceleration(Wonderbits):
         """该函数用于获取加速度传感器检测的x轴加速度值，单位,m/s2 """
         command = 'acceleration{}.get_x_acceleration()'.format(self.index)
         self.get_command(command)
-        return self.r
+        return self._result
     
     def get_y_acceleration(self):
         """该函数用于获取加速度传感器检测的y轴加速度值，单位,m/s2 """
         command = 'acceleration{}.get_y_acceleration()'.format(self.index)
         self.get_command(command)
-        return self.r
+        return self._result
     
     def get_z_acceleration(self):
         """该函数用于获取加速度传感器检测的z轴加速度值，单位,m/s2 """
         command = 'acceleration{}.get_z_acceleration()'.format(self.index)
         self.get_command(command)
-        return self.r
+        return self._result
     
     def get_acceleration(self):
         """该函数用于获取加速度传感器检测的x、y、z三轴合加速度值，单位,m/s2 """
         command = 'acceleration{}.get_acceleration()'.format(self.index)
         self.get_command(command)
-        return self.r
+        return self._result
     
     def get_x_angular_velocity(self):
         """该函数用于获取加速度传感器检测的x轴角速度值，单位,°/s """
         command = 'acceleration{}.get_x_angular_velocity()'.format(self.index)
         self.get_command(command)
-        return self.r
+        return self._result
     
     def get_y_angular_velocity(self):
         """该函数用于获取加速度传感器检测的y轴角速度值，单位,°/s """
         command = 'acceleration{}.get_y_angular_velocity()'.format(self.index)
         self.get_command(command)
-        return self.r
+        return self._result
     
     def get_z_angular_velocity(self):
         """该函数用于获取加速度传感器检测的z轴角速度值，单位,°/s """
         command = 'acceleration{}.get_z_angular_velocity()'.format(self.index)
         self.get_command(command)
-        return self.r
+        return self._result
     
     def calibrate(self):
         """校准加速度传感器零点,使用该函数时，加速度模块指示灯会在校准执行过程中变为黄色，校准完成后回复原有颜色。,校准过程中需要保证加速度模块且保持静止不动，有汉字的一面朝上。 """

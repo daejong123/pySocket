@@ -1,5 +1,7 @@
 from .wbits import Wonderbits
 
+
+
 class Display(Wonderbits):
     def __init__(self, index = 1):
         Wonderbits.__init__(self)
@@ -43,7 +45,7 @@ class Display(Wonderbits):
         """该函数用于获取翻页按钮状态 """
         command = 'display{}.get_button_state()'.format(self.index)
         self.get_command(command)
-        return self.r
+        return self._result
     
     def disable_page_turning(self):
         """禁止翻页按键功能,在开启翻页按键功能的情况下使用该函数可以禁止翻页按键功能，禁止翻页按键功能后将不能通过翻页按键来切换不同页码的显示内容，只能使用turn_to_page函数来切换页码,系统默认开启翻页按键功能 """
