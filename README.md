@@ -1,5 +1,7 @@
 ## python-sdk
 
+**[豌豆拼api文档链接](http://doc.wonderbits.cn/)**
+
 > 主要服务于豌豆拼硬件产品
 >
 > 需要搭配豌豆拼硬件模块使用

@@ -134,6 +134,7 @@ class WBSerial(object):
             self._ser = serial.Serial(portx, bps, timeout=timex)
             cmd = '{}\r\n'.format("reset()").encode('gbk')
             self._ser.write(cmd)
+
             # 监听串口返回的数据
             threading.Thread(target=self._create_listen_serial_port_data_event_thread, args=('_create_listen_serial_port_data_event_thread',)).start()
             
@@ -149,7 +150,7 @@ class WBSerial(object):
             self._initProperty()
 
     # 创建一个子线程
-    def _create_try_connect_py_serial_thread(self, threadName):
+    def _create_try_connect_py_serial_thread(self, thread_name):
         while True:
             self._initConnect()
             if not self._canUseCount:
