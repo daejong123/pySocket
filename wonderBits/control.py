@@ -54,7 +54,12 @@ class Control(Wonderbits):
         command = 'control{}.is_sw1_pressed()'.format(self.index)
         self.get_command(command)
         return self._result
-    
+      
+    def set_m1_m2_sensitivity(self, limit):
+        """设置触摸灵敏度,通过设置灵敏度改变M1，M2的触发阈值,当get_m1_value或get_m2_value小于阈值时则认为M1或M2与COM导通 """
+        command = 'control{}.set_m1_m2_sensitivity({})'.format(self.index,limit)
+        self.set_command(command)
+
     def is_sw2_pressed(self):
         """该函数用于判断SW2是否被按下 """
         command = 'control{}.is_sw2_pressed()'.format(self.index)

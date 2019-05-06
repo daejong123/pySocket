@@ -6,12 +6,12 @@ import time
 display1 = Display()
 led = Led()
 control1 = Control()
-lightBelt = LightBelt()
+# lightBelt = LightBelt()
 signal = Signal()
 
 
 time.sleep(3)
-lightBelt.set_leds_rgb(1, 10, 255, 0, 0)
+# lightBelt.set_leds_rgb(1, 10, 255, 0, 0)
 signal.set_rgb(255, 255, 0)
 
 
@@ -19,12 +19,14 @@ signal.set_rgb(255, 255, 0)
 def whenSw1Pressed(data):
     if data:
         sw4 = control1.get_sw4()
+        display1.print(1, 1, sw4)
         print('我收到sw4状态{}'.format(sw4))
 
 @control1.event.sw2_pressed()
 def whenSw2Pressed(data):
     if data:
         isAtOne = control1.is_sw3_at_1()
+        display1.print(1, 1, isAtOne)
         print('我收到sw在1位置{}'.format(isAtOne))
 
 # content = 1

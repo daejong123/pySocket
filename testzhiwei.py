@@ -1,24 +1,30 @@
-from wonderbits import Display, Control, Hall, Pulse,Signal
+from wonderbits import Display, Control, Led
 import time
-import math
+import random
 
+# 初始化模块
 d1 = Display()
 c1 = Control()
-s1 = Signal()
-p1 = Pulse()
-h1 = Hall()
-# #
-time.sleep(3)
-# #
-# content = 1
-# for i in range(100):
-#     d1.print(1, 1, content)
-#     content += 1
+l1 = Led()
 
-# d1.turn_to_page(3)
-# time.sleep(2)
-# d1.turn_to_page(2)
-h1.calibrate()
-s1.play_a_note(600, 2000)
-value = p1.get_heart_rate()
-d1.print(1, 1, c1.is_sw1_pressed())
+
+d1.hide_console()
+
+# 显示模块显示内容
+d1.print(2, 1, 'value:')
+
+# 计数变量
+content = 1
+
+for i in range(30):
+    # 获取控制模块开关sw4的值
+    sw4 = c1.get_sw4()
+    # 在显示屏上显示sw4的值
+    d1.print(2, 7, sw4)
+    # 设置彩灯rbg随机颜色
+    l1.set_rgb(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+
+    # 显示模块显示计数值 
+    d1.print(1, 1, content)
+    # 将计数变量 递增1
+    content += 1

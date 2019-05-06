@@ -24,7 +24,6 @@ URL='https://github.com/daejong123/pySocket.git'
 REQUIRED = [
     # 'requests', 'maya', 'records',
     'requests',
-    'python-socketio',
     'pyserial'
 ]
 
