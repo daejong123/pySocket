@@ -82,15 +82,15 @@ class WBSerial(object):
                 threading.Thread(target=self._create_return_serial_data_thread, args=('_create_return_serial_data_thread', receive_str)).start()
 
     # 创建一个子线程进行 事件通知回调
-    def _create_return_event_data_thread(self,name, result):
+    def _create_return_event_data_thread(self, name, result):
         self.event_data_cb(result)
 
     # 创建一个子线程进行 获取值完毕回调
-    def _create_return_serial_data_thread(self,name, value):
+    def _create_return_serial_data_thread(self, name, value):
         self.reporter_data_cb(value)
 
     # 创建一个子线程进行 命令执行完毕回调
-    def _create_return_command_finished_thread(self,name, key):
+    def _create_return_command_finished_thread(self, name, key):
         self.command_finish_cb(key)
 
     # 创建一个子线程进行 监听串口数据(轮询)
