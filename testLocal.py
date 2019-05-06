@@ -41,27 +41,26 @@ def whenSw2Pressed(data):
 #     isAtOne = control1.is_sw3_at_1()
 #     print('我收到sw在1位置: {}'.format(isAtOne))
 
+'''
+def __init__(self, index=1):
+        Wonderbits.__init__(self)
+        self.index = index
+        self.event = Control._Event(self)
 
+    class _Event():
+        def __init__(self, this):
+            self.this = this
 
-# def __init__(self, index=1):
-#         Wonderbits.__init__(self)
-#         self.index = index
-#         self.event = Control._Event(self)
+        def sw1_pressed(self):
+            def wrapper(cb):
+                self.this._register_event(
+                    'control{}'.format(self.this.index), 'sw1', cb)
+            return wrapper
 
-#     class _Event():
-#         def __init__(self, this):
-#             self.this = this
+        def sw2_pressed(self):
+            def wrapper(cb):
+                self.this._register_event(
+                    'control{}'.format(self.this.index), 'sw2', cb)
+            return wrapper
 
-#         def sw1_pressed(self):
-#             def wrapper(cb):
-#                 self.this.register_event(
-#                     'control{}'.format(self.this.index), 'sw1', cb)
-#             return wrapper
-
-#         def sw2_pressed(self):
-#             def wrapper(cb):
-#                 self.this.register_event(
-#                     'control{}'.format(self.this.index), 'sw2', cb)
-#             return wrapper
-
-
+'''

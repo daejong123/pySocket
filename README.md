@@ -33,6 +33,12 @@ d1 = Display()
 c1 = Control()
 l1 = Led()
 
+# 隐藏控制台输出 （默认方式为关闭， 任一个豌豆拼模块的实例调用 hide_console() 方法）
+# c1.hide_console()
+
+# 开启控制台输出 (任一个豌豆拼模块的实例，如c1.show_console())
+d1.show_console()
+
 # 显示模块显示内容
 d1.print(2, 1, 'value:')
 
